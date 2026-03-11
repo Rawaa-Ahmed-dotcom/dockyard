@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="DockYard — inventory and warehouse operations platform">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0d0818"/>
+      <stop offset="1" stop-color="#1c0f2e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.42" r="0.65">
+      <stop offset="0" stop-color="#7c55fb" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#7c55fb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowPink" cx="0.92" cy="0.08" r="0.5">
+      <stop offset="0" stop-color="#f871d8" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#f871d8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="textTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8f0ff"/>
+      <stop offset="1" stop-color="#e2c9ff"/>
+    </linearGradient>
+    <linearGradient id="crateTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c6a8ff"/>
+      <stop offset="1" stop-color="#a374ff"/>
+    </linearGradient>
+    <linearGradient id="crateLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c55fb"/>
+      <stop offset="1" stop-color="#5a35d9"/>
+    </linearGradient>
+    <linearGradient id="crateRight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5a35d9"/>
+      <stop offset="1" stop-color="#3d1f8f"/>
+    </linearGradient>
+    <linearGradient id="crateTopPink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc2f0"/>
+      <stop offset="1" stop-color="#fb9ce6"/>
+    </linearGradient>
+    <linearGradient id="crateLeftPink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f871d8"/>
+      <stop offset="1" stop-color="#c94bad"/>
+    </linearGradient>
+    <linearGradient id="crateRightPink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c94bad"/>
+      <stop offset="1" stop-color="#8f2f7a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="320" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="20" fill="url(#glowPink)"/>
+  <rect width="1200" height="320" rx="20" fill="url(#glow)"/>
+  <rect x="0.5" y="0.5" width="1199" height="319" rx="19.5" fill="none" stroke="#332352" stroke-width="1"/>
+
+  <!-- isometric crate stack (right side) -->
+  <g transform="translate(838,78)">
+    <!-- back-left crate (pink) -->
+    <g transform="translate(0,64)">
+      <polygon points="0,28 52,0 104,28 52,56" fill="url(#crateTopPink)"/>
+      <polygon points="0,28 52,56 52,112 0,84" fill="url(#crateLeftPink)"/>
+      <polygon points="104,28 52,56 52,112 104,84" fill="url(#crateRightPink)"/>
+    </g>
+    <!-- front-right crate (larger, overlapping, purple) -->
+    <g transform="translate(78,20)">
+      <polygon points="0,34 64,0 128,34 64,68" fill="url(#crateTop)"/>
+      <polygon points="0,34 64,68 64,138 0,104" fill="url(#crateLeft)"/>
+      <polygon points="128,34 64,68 64,138 128,104" fill="url(#crateRight)"/>
+      <line x1="32" y1="17" x2="32" y2="85" stroke="#f8f0ff" stroke-opacity="0.25" stroke-width="2"/>
+      <line x1="96" y1="17" x2="96" y2="85" stroke="#3d1f8f" stroke-opacity="0.4" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- 3D extruded wordmark -->
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="76">
+    <!-- extrusion depth layers -->
+    <g fill="#3d1f8f">
+      <text x="61" y="181">DockYard</text>
+      <text x="62" y="182">DockYard</text>
+      <text x="63" y="183">DockYard</text>
+      <text x="64" y="184">DockYard</text>
+      <text x="65" y="185">DockYard</text>
+      <text x="66" y="186">DockYard</text>
+      <text x="67" y="187">DockYard</text>
+      <text x="68" y="188">DockYard</text>
+    </g>
+    <g fill="#5a35d9">
+      <text x="69" y="189">DockYard</text>
+      <text x="70" y="190">DockYard</text>
+      <text x="71" y="191">DockYard</text>
+      <text x="72" y="192">DockYard</text>
+    </g>
+    <!-- front face -->
+    <text x="60" y="180" fill="url(#textTop)">DockYard</text>
+    <text x="60" y="180" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1">DockYard</text>
+  </g>
+
+  <text x="62" y="228" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#c9b3e8">
+    The operational command center for inventory
+  </text>
+  <text x="62" y="260" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#8c76ad">
+    Track stock · Manage products &amp; suppliers · Run warehouses · Spot risk before it costs you
+  </text>
+</svg>
