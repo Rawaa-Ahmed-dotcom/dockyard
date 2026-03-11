@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+  /* 8px spacing scale — do not add arbitrary values outside this set */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  /* Type scale — max 5 sizes */
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-small: 14px;
+  --text-small--line-height: 20px;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-h3: 24px;
+  --text-h3--line-height: 32px;
+  --text-h2: 30px;
+  --text-h2--line-height: 38px;
+  --text-h1: 36px;
+  --text-h1--line-height: 44px;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --animate-in: fade-in 150ms ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    /* Neutral — warm lavender-tinted paper, not slate */
+    --background: #f1eefa;
+    --foreground: #22201f;
+    --surface: #ffffff;
+    --surface-muted: #ece8f8;
+    --border: #e1dcf1;
+    --border-strong: #cec6e6;
+    --muted-foreground: #6b6663;
+
+    /* Brand */
+    --primary: #7c55fb;
+    --primary-foreground: #ffffff;
+    --brand-pink: #f871d8;
+    --brand-pink-foreground: #3a0a2e;
+
+    --accent: #f1eafd;
+    --accent-foreground: #22201f;
+
+    /* Semantic colors — shares hues with lib/chart-colors.ts for one system */
+    --success: #1baf7a;
+    --success-foreground: #ffffff;
+    --success-bg: #e2f8ef;
+
+    --warning: #c98400;
+    --warning-foreground: #ffffff;
+    --warning-bg: #fdf1da;
+
+    --danger: #e34948;
+    --danger-foreground: #ffffff;
+    --danger-bg: #fce9e9;
+
+    --info: #2a78d6;
+    --info-foreground: #ffffff;
+    --info-bg: #e7f0fc;
+
+    --ring: color-mix(in oklch, var(--primary) 55%, transparent);
+  }
+
+  :root[data-theme="dark"] {
+    --background: #171221;
+    --foreground: #f1eefa;
+    --surface: #1e1830;
+    --surface-muted: #251e39;
+    --border: #322a4a;
+    --border-strong: #423860;
+    --muted-foreground: #b3a9cc;
+
+    --primary: #9d7dff;
+    --primary-foreground: #1a0f38;
+    --brand-pink: #ff8fe0;
+    --brand-pink-foreground: #3a0a2e;
+
+    --accent: #29223f;
+    --accent-foreground: #f1eefa;
+
+    --success: #3ecb96;
+    --success-foreground: #0c2118;
+    --success-bg: #123527;
+
+    --warning: #e8a93a;
+    --warning-foreground: #241703;
+    --warning-bg: #3a2a0c;
+
+    --danger: #f07473;
+    --danger-foreground: #2a0808;
+    --danger-bg: #3a1414;
+
+    --info: #6ba8ee;
+    --info-foreground: #0a1c33;
+    --info-bg: #142842;
+
+    --ring: color-mix(in oklch, var(--primary) 55%, transparent);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* App shell — subtle ambient depth behind flat content, and a light
+   entrance transition so route changes feel alive without being showy. */
+@layer components {
+  .app-canvas {
+    background:
+      radial-gradient(60% 50% at 100% 0%, color-mix(in oklch, var(--primary) 7%, transparent), transparent 70%),
+      var(--background);
+  }
+
+  @keyframes app-enter {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .app-enter {
+    animation: app-enter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .app-enter {
+      animation: none;
+    }
+    .skeleton-shimmer::before {
+      animation: none;
+    }
+  }
+}
+
+/* Landing page (marketing surface) — committed color field, own motion language.
+   Scoped with a `landing-` prefix so it never bleeds into the app shell. */
+@layer components {
+  .landing-hero-field {
+    background:
+      radial-gradient(58% 46% at 86% 6%, color-mix(in oklch, var(--brand-pink) 65%, transparent), transparent 60%),
+      radial-gradient(46% 40% at 6% 94%, color-mix(in oklch, #47bfff 55%, transparent), transparent 65%),
+      radial-gradient(75% 65% at 30% 0%, color-mix(in oklch, var(--primary) 92%, transparent), transparent 70%),
+      #170f2e;
+  }
+
+  .landing-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+
+  @keyframes landing-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .landing-reveal {
+    animation: landing-fade-up 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .landing-reveal-1 {
+    animation-delay: 60ms;
+  }
+  .landing-reveal-2 {
+    animation-delay: 140ms;
+  }
+  .landing-reveal-3 {
+    animation-delay: 220ms;
+  }
+  .landing-reveal-4 {
+    animation-delay: 300ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing-reveal,
+    .landing-reveal-1,
+    .landing-reveal-2,
+    .landing-reveal-3,
+    .landing-reveal-4 {
+      animation: none;
+    }
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-pink-foreground: var(--brand-pink-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-danger-bg: var(--danger-bg);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-bg: var(--info-bg);
+  --color-ring: var(--ring);
+}
