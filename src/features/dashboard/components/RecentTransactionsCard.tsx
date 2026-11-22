@@ -1,17 +1,11 @@
-import { ArrowDownLeft, ArrowUpRight, RefreshCw, Repeat, Receipt } from "lucide-react"
+import {  Receipt } from "lucide-react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { EmptyState } from "@/components/shared/EmptyState"
 import { formatDateTime } from "@/lib/utils"
-import type { InventoryMovement, MovementType } from "@/types"
-
-export const MOVEMENT_CONFIG: Record<MovementType, { label: string; icon: typeof ArrowUpRight; className: string }> = {
-  "stock-in": { label: "Stock In", icon: ArrowDownLeft, className: "text-success bg-success-bg" },
-  "stock-out": { label: "Stock Out", icon: ArrowUpRight, className: "text-danger bg-danger-bg" },
-  adjustment: { label: "Adjustment", icon: RefreshCw, className: "text-info bg-info-bg" },
-  transfer: { label: "Transfer", icon: Repeat, className: "text-warning bg-warning-bg" },
-}
+import type { InventoryMovement } from "@/types"
+import { MOVEMENT_CONFIG } from "./movementConfig"
 
 interface RecentTransactionsCardProps {
   transactions: InventoryMovement[]

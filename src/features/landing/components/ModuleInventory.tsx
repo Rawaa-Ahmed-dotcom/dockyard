@@ -3,7 +3,7 @@ import { ArrowLeftRight } from "lucide-react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { formatDateTime } from "@/lib/utils"
 import { useDashboardSummary } from "@/features/dashboard/hooks/useDashboardSummary"
-import { MOVEMENT_CONFIG } from "@/features/dashboard/components/RecentTransactionsCard"
+import { MOVEMENT_CONFIG } from "../../dashboard/components/movementConfig"
 import { ModuleTile } from "./ModuleTile"
 
 export function ModuleInventory({ className }: { className?: string }) {
