@@ -1,14 +1,13 @@
-import * as React from "react"
-import { type VariantProps } from "class-variance-authority"
-import { badgeVariants } from "./badge-variants"
-import { cn } from "@/lib/utils"
-
-
+import * as React from "react";
+import { type VariantProps } from "class-variance-authority";
+import { badgeVariants } from "./badge-variants";
+import { cn } from "@/lib/utils";
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
+  extends
+    React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badgeVariants> {
-  dot?: boolean
+  dot?: boolean;
 }
 
 function Badge({ className, variant, dot, children, ...props }: BadgeProps) {
@@ -22,7 +21,7 @@ function Badge({ className, variant, dot, children, ...props }: BadgeProps) {
       )}
       {children}
     </span>
-  )
+  );
 }
 
-export { Badge }
+export { Badge };
